@@ -1,7 +1,10 @@
 # SpaceShooter
 
+<<<<<<< HEAD
 Live Version @ : https://stud.hosted.hr.nl/0917863/SpaceShooter
 
+=======
+>>>>>>> 50fb2e28fc0815d2ead39bcf4064362447221631
 Installation Manual :
 
 #1  Download the Files
@@ -9,6 +12,7 @@ Installation Manual :
 #2  Give the files a location on your computer
 
 #3  Open the index.html file locally to play the game
+<<<<<<< HEAD
     
     If u want u can upload the game to your server, this will enable u to find and play te game online.
     For this u need to copy the folder to the server.
@@ -53,3 +57,7 @@ Composition :   Player (class) -> Spaceship (class) -> Laser (class)   +   Enemi
 
 Inheritance :   Enemie (class) inherits from Player (class)
 
+=======
+    If u want u can upload the game to your server, this will enable u to find and play te game online.
+    For this u need to copy the folder to the server.
+>>>>>>> 50fb2e28fc0815d2ead39bcf4064362447221631
