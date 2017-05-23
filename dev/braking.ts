@@ -13,7 +13,11 @@ class Braking implements Behaviour {
 
     }
     onKeyDown(e: KeyboardEvent):void{
-        
+            if(e.key == 'a') {
+            this.car.pivot -=45;
+        }   else if(e.key == 'd') {
+            this.car.pivot +=45;
+        }
     }
 
     onKeyUp(a: KeyboardEvent):void{

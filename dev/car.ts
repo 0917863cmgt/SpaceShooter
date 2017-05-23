@@ -2,9 +2,9 @@
 
 class Car {
 
+    public lasers : Array<Laser>;
+    public laser : Laser;
     public behaviour: Behaviour;
-
-
     public speed: number;
     public energy: number;
     public pivot: number;
@@ -14,7 +14,6 @@ class Car {
     public y: number;
     private wheel1: Wheel;
     private wheel2: Wheel;
-    private state: number;
     private jumpDirection: number;
 
     constructor(parent: HTMLElement) {
@@ -40,7 +39,7 @@ class Car {
 
     private onKeyDown(e: KeyboardEvent): void {
         this.behaviour.onKeyDown(e);
-        console.log(e);
+        console.log(this.pivot);
         // if(e.key == ' ' && this.state == 1) {
         //     this.state = 2;
         // } else if(e.key == 'Control' && this.state == 1) {
@@ -61,6 +60,7 @@ class Car {
         this.div.style.transform = "translate(" + this.x + "px," + this.y + "px) rotate("+ this.pivot +"deg)";
         this.wheel1.draw();
         this.wheel2.draw();
+        
     } 
 
 

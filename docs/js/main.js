@@ -49,6 +49,12 @@ var Braking = (function () {
         this.car.x += this.car.speed;
     };
     Braking.prototype.onKeyDown = function (e) {
+        if (e.key == 'a') {
+            this.car.pivot -= 45;
+        }
+        else if (e.key == 'd') {
+            this.car.pivot += 45;
+        }
     };
     Braking.prototype.onKeyUp = function (a) {
         if (a.key == 'Shift') {
@@ -98,7 +104,7 @@ var Car = (function () {
     }
     Car.prototype.onKeyDown = function (e) {
         this.behaviour.onKeyDown(e);
-        console.log(e);
+        console.log(this.pivot);
     };
     Car.prototype.onKeyUp = function (a) {
         this.behaviour.onKeyUp(a);
@@ -224,10 +230,10 @@ var Driving = (function () {
             this.car.behaviour = new Reverse(this.car);
         }
         else if (e.key == 'a') {
-            this.car.pivot -= 10;
+            this.car.pivot -= 45;
         }
         else if (e.key == 'd') {
-            this.car.pivot += 10;
+            this.car.pivot += 45;
         }
     };
     Driving.prototype.onKeyUp = function (a) {
@@ -301,6 +307,55 @@ var Jumping = (function () {
     };
     return Jumping;
 }());
+var Laser = (function () {
+    function Laser() {
+        this.div = document.createElement("laser");
+        this.parent = document.getElementById("container");
+        this.parent.appendChild(this.div);
+        this.speed = 6;
+    }
+    Laser.prototype.draw = function () {
+        switch (this.direction) {
+            case 0:
+                this.y += this.speed;
+                break;
+            case 90:
+                this.x += this.speed;
+                break;
+            case 180:
+                this.y -= this.speed;
+                break;
+            case 270:
+                this.x -= this.speed;
+                break;
+            case 360:
+                this.direction = 0;
+                break;
+            case -45:
+                this.direction = 315;
+                break;
+            case 45:
+                this.y += 0.5 * this.speed;
+                this.x += 0.5 * this.speed;
+                break;
+            case 135:
+                this.y -= 0.5 * this.speed;
+                this.x += 0.5 * this.speed;
+                break;
+            case 225:
+                this.y -= 0.5 * this.speed;
+                this.x -= 0.5 * this.speed;
+                break;
+            case 315:
+                this.y += 0.5 * this.speed;
+                this.x -= 0.5 * this.speed;
+                break;
+        }
+        console.log(this.direction);
+        this.div.style.transform = "translate(" + this.x + "px," + this.y + "px)";
+    };
+    return Laser;
+}());
 var Pivot = (function () {
     function Pivot(c) {
         this.car = c;
@@ -341,5 +396,26 @@ var Reverse = (function () {
     Reverse.prototype.onMouseClick = function (b) {
     };
     return Reverse;
+}());
+var Shooting = (function () {
+    function Shooting(c) {
+        this.car = c;
+        this.car.lasers.push(new Laser);
+        for (var _i = 0, _a = this.car.lasers; _i < _a.length; _i++) {
+            var g = _a[_i];
+            g.draw();
+            g.direction = this.car.pivot;
+        }
+        this.car.behaviour = new Driving(this.car);
+    }
+    Shooting.prototype.draw = function () {
+    };
+    Shooting.prototype.onKeyDown = function (e) {
+    };
+    Shooting.prototype.onKeyUp = function (a) {
+    };
+    Shooting.prototype.onMouseClick = function (b) {
+    };
+    return Shooting;
 }());
 //# sourceMappingURL=main.js.map

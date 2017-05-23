@@ -29,9 +29,9 @@ class Driving implements Behaviour {
         }   else if(e.key == 's') {
             this.car.behaviour = new Reverse(this.car);
         }   else if(e.key == 'a') {
-            this.car.pivot -=10;
+            this.car.pivot -=45;
         }   else if(e.key == 'd') {
-            this.car.pivot +=10;
+            this.car.pivot +=45;
         }
         
     }

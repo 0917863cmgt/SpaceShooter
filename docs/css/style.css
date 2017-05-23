@@ -28,10 +28,10 @@ space {
     /*animation: skyanimation 8s linear infinite;*/
 }
 
-plateau {
-    background-image: url(../images/plateau.png);
-    background-repeat: repeat-x;
-    width:2048; height:1536;
+laser {
+    background-image: url(../images/laser.gif);
+    /*background-repeat: repeat-x;*/
+    width:10px; height:10px;
     /*animation: plateauanimation 3.4s linear infinite;*/
 }
 
