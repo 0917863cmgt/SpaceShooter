@@ -9,13 +9,10 @@ class Crashing implements Behaviour {
 
     }
     draw(){
-        this.wheel1.speed = -2;
+            this.wheel1.speed = -2;
             this.wheel2.speed = 2;
             this.car.div.classList.add("crashed");
-
-            // gameOver functie van game aanroepen via singleton
-            document.getElementById("plateau").classList.add("animationpaused");
-            document.getElementById("sky").classList.add("animationpaused");    
+            Game.getInstance().gameOver();
         }
 
     onKeyDown(){

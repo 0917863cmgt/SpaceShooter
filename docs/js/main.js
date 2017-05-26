@@ -171,8 +171,7 @@ var CarSwitch = (function () {
         this.wheel1.speed = -2;
         this.wheel2.speed = 2;
         this.div.classList.add("crashed");
-        document.getElementById("plateau").classList.add("animationpaused");
-        document.getElementById("sky").classList.add("animationpaused");
+        Game.getInstance().gameOver();
     };
     return CarSwitch;
 }());
@@ -186,8 +185,7 @@ var Crashing = (function () {
         this.wheel1.speed = -2;
         this.wheel2.speed = 2;
         this.car.div.classList.add("crashed");
-        document.getElementById("plateau").classList.add("animationpaused");
-        document.getElementById("sky").classList.add("animationpaused");
+        Game.getInstance().gameOver();
     };
     Crashing.prototype.onKeyDown = function () {
     };
@@ -280,10 +278,20 @@ var Game = (function () {
         this.block.draw();
         requestAnimationFrame(function () { return _this.gameLoop(); });
     };
+    Game.prototype.gameOver = function () {
+        document.getElementById("plateau").classList.add("animationpaused");
+        document.getElementById("sky").classList.add("animationpaused");
+    };
+    Game.getInstance = function () {
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    };
     return Game;
 }());
 window.addEventListener("load", function () {
-    var g = new Game();
+    Game.getInstance();
 });
 var Jumping = (function () {
     function Jumping(c) {

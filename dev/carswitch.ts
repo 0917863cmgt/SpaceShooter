@@ -70,9 +70,7 @@ class CarSwitch {
         this.wheel2.speed = 2;
         this.div.classList.add("crashed");
 
-        // gameOver functie van game aanroepen via singleton
-        document.getElementById("plateau").classList.add("animationpaused");
-        document.getElementById("sky").classList.add("animationpaused");
+        Game.getInstance().gameOver();
     }
 
 }
