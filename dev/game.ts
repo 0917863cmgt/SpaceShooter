@@ -2,8 +2,9 @@ class Game {
 
     private car : Car;
     private block : Block;
+    private static instance: Game;
 
-    constructor() {
+    private constructor() {
         let container = document.getElementById("container");
         this.car = new Car(container);
         this.block = new Block(container);
@@ -16,10 +17,21 @@ class Game {
         this.block.draw();
         requestAnimationFrame(() => this.gameLoop());
     }
-} 
 
+    public gameOver(){
+            document.getElementById("plateau").classList.add("animationpaused");
+            document.getElementById("sky").classList.add("animationpaused");    
+    }
+
+      public static getInstance() {
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    }
+} 
 
 // load
 window.addEventListener("load", function() {
-    let g:Game = new Game();
+    Game.getInstance();
 });
